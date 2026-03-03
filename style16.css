@@ -1,0 +1,94 @@
+body {
+    background: linear-gradient(to bottom, #f79dc1, #e6326e);
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+h1 {
+    color: #c2185b;
+}
+
+p {
+    font-size: 20px;
+    font-family: 'Times New Roman';
+}
+
+.subtitle {
+    color: #555;
+}
+.section {
+    background: white;
+    padding: 20px;
+    margin: 25px auto;
+    max-width: 700px;
+    border-radius: 15px;
+    box-shadow: 1 1 15px rgba(1, 1, 1, 2);
+}
+
+textarea {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 2px solid #ccc;
+}
+
+button {
+    margin-top: 10px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 20px;
+    background: #ff69b4;
+    color: white;
+    cursor: cell;
+}
+
+button:hover {
+    background: #ff1493;
+}
+
+.list {
+    margin-top: 20px;
+}
+.item {
+    background: #fff0f6;
+    padding: 15px;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+}
+
+/* FLOWER CONTAINER */
+#flower-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* so it doesn't block clicks */
+    overflow: hidden;
+    z-index: 999;
+}
+
+/* EACH FLOWER */
+.flower {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation-name: fall;
+    animation-timing-function: linear;
+}
+
+/* FALLING ANIMATION */
+@keyframes fall {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(110vh);
+        opacity: 0;
+    }
+}
