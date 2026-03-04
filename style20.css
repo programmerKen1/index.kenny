@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(to bottom, #ffe6ea, #ffc2d1);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+
+    overflow-y: auto; /* allow vertical scroll */
+    overflow-x: hidden; /* prevent sideways scroll */
+}
+
+/* Overlay */
+#overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.25);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+#startBtn {
+    padding: 15px 30px;
+    font-size: 18px;
+    border: none;
+    border-radius: 25px;
+    background: #ff4d79;
+    color: white;
+    cursor: pointer;
+}
+
+/* Message */
+.message {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    padding-top: 120px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Falling love */
+.love {
+    position: fixed;
+    top: -20px;
+    pointer-events: none;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
