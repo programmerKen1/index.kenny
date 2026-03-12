@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Sofiri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL STYLES & UTILS --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        }
+
+        .hidden-step {
+            display: none !important;
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* --- STEP 1: LOGIN --- */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        /* --- STEP 2: COUNTDOWN & BUTTERFLIES --- */
+        #countdown-number {
+            font-size: 15rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            text-shadow: 4px 4px 0px #ffe66d;
+            animation: pulseCount 1s infinite;
+        }
+
+        @keyframes pulseCount {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .butterfly {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b6b'%3E%3Cpath d='M12 2C12 2 11 4 11 6C11 8 12 10 12 10C12 10 13 8 13 6C13 4 12 2 12 2ZM8 6C6 4 2 5 2 8C2 11 6 12 8 10C8 10 8.5 9.5 9 9C9.5 9.5 10 10 10 10C10 12 8 14 6 14C3 14 1 11 1 8C1 5 4 2 8 4C8.5 4.5 9 5 9 5C9 5 9.5 4.5 10 4C14 2 17 5 17 8C17 11 15 14 12 14C10 14 8 12 8 10C8 10 8.5 9.5 9 9C9.5 9.5 10 10 10 10C12 12 16 11 16 8C16 5 12 4 10 6C9.5 6.5 9 7 9 7C9 7 8.5 6.5 8 6Z'/%3E%3C/svg%3E");
+            background-size: cover;
+            opacity: 0.8;
+            animation: fly 10s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes fly {
+            0% { transform: translate(0, 100vh) rotate(0deg); }
+            25% { transform: translate(20px, 75vh) rotate(20deg); }
+            50% { transform: translate(-20px, 50vh) rotate(-10deg); }
+            75% { transform: translate(20px, 25vh) rotate(10deg); }
+            100% { transform: translate(0, -10vh) rotate(0deg); }
+        }
+
+        /* --- STEP 3: FLOWERS & HEADER --- */
+        .flower {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff9ff3'%3E%3Cpath d='M12 2C13 4 15 5 17 5C15 5 13 6 12 8C11 6 9 5 7 5C9 5 11 4 12 2ZM12 8C12 8 12 8 12 8C12 8 12 8 12 8ZM12 8C14 10 17 11 20 10C17 11 15 13 14 16C13 13 11 11 8 10C11 11 12 10 12 8ZM12 16C12 16 12 16 12 16C12 16 12 16 12 16ZM12 16C13 19 16 21 19 21C16 21 13 22 12 24C11 22 8 21 5 21C8 21 11 19 12 16Z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: fall linear infinite;
+            z-index: 5;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.5; }
+        }
+
+        .pop-flower {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 50px;
+            background: #ff6b6b;
+            border-radius: 50%;
+            animation: popUp 1s ease-out forwards;
+        }
+
+        @keyframes popUp {
+            to { bottom: 20%; transform: scale(1.2); opacity: 0; }
+        }
+
+        .princess-text {
+            font-family: 'Dancing Script', cursive;
+            background: linear-gradient(to right, #ff6b6b, #feca57);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 5rem;
+            animation: floatText 3s ease-in-out infinite;
+            z-index: 20;
+            position: relative;
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* --- STEP 4: CAKE --- */
+        .cake-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .cake-container:hover { transform: scale(1.05); }
+
+        .candle-flame {
+            width: 15px;
+            height: 30px;
+            background: radial-gradient(ellipse at bottom, #ffff00 0%, #ff9900 100%);
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px #ff9900;
+            animation: flicker 0.1s infinite alternate;
+            z-index: 10;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+        }
+
+        .smoke {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: rgba(200,200,200,0.5);
+            border-radius: 50%;
+            top: -20px;
+            left: 50%;
+            opacity: 0;
+        }
+        
+        .smoke-anim {
+            animation: riseSmoke 2s forwards;
+        }
+
+        @keyframes riseSmoke {
+            0% { transform: translate(-50%, 0) scale(1); opacity: 0.8; }
+            100% { transform: translate(-50%, -100px) scale(3); opacity: 0; }
+        }
+
+        /* --- STEP 5: HEART LETTER --- */
+        .heart-box {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: #ff4757;
+            transform: rotate(-45deg);
+            box-shadow: 0 0 50px rgba(255, 71, 87, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: heartbeat 1.5s infinite;
+            cursor: pointer;
+        }
+
+        .heart-box::before, .heart-box::after {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: #ff4757;
+            border-radius: 50%;
+        }
+        .heart-box::before { top: -150px; left: 0; }
+        .heart-box::after { left: 150px; top: 0; }
+
+        @keyframes heartbeat {
+            0% { transform: rotate(-45deg) scale(1); }
+            14% { transform: rotate(-45deg) scale(1.1); }
+            28% { transform: rotate(-45deg) scale(1); }
+            42% { transform: rotate(-45deg) scale(1.1); }
+            70% { transform: rotate(-45deg) scale(1); }
+        }
+
+        .heart-content {
+            transform: rotate(45deg);
+            z-index: 10;
+            text-align: center;
+            color: black;
+            padding: 20px;
+        }
+
+        /* --- STEP 6: GALLERY --- */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotation));
+            transition: transform 0.3s;
+        }
+        .polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 10; }
+
+        /* --- STEP 7: FINAL GIFT --- */
+        .glowing-heart {
+            font-size: 10rem;
+            color: #ff6b6b;
+            animation: glow 2s infinite alternate;
+            cursor: pointer;
+            filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.8));
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.8)); transform: scale(1); }
+            to { filter: drop-shadow(0 0 60px rgba(255, 0, 0, 1)); transform: scale(1.1); }
+        }
+
+        /* --- STEP 8: LETTER PAGE --- */
+        .letter-paper {
+            background: #fffef0;
+            background-image: radial-gradient(#e0e0e0 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.5rem;
+            color: #444;
+            line-height: 2;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .balloon {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: floatBalloon 10s linear infinite;
+            z-index: 0;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            width: 2px;
+            height: 50px;
+            background: rgba(0,0,0,0.2);
+        }
+
+        @keyframes floatBalloon {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-20vh) rotate(10deg); }
+        }
+
+    </style>    
+</head>
+<body class="h-screen w-screen flex items-center justify-center bg-pink-50">
+    <!-- ================= STEP 1: LOGIN ================= -->
+    <div id="step-login" class="flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 z-50 bg-gradient-to-br from-pink-200 to-purple-200">
+        <div class="glass-panel p-10 rounded-2xl flex flex-col items-center max-w-md w-full mx-4">
+            <h1 class="text-3xl font-bold text-gray-700 mb-2">Welcome, Princess</h1>
+            <p class="text-gray-500 mb-6 text-sm">Enter your special date to unlock your gift.</p>
+            
+            <div class="flex gap-2 mb-6 w-full">
+                <select id="month-input" class="w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white/80">
+                    <option value="" disabled selected>Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February</option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select id="day-input" class="w-1/2 p-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-pink-400 bg-white/80">
+                    <option value="" disabled selected>Day</option>
+                    <!-- JS will populate days -->
+                </select>
+            </div>
+
+            <button onclick="checkLogin()" class="w-full bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold py-3 rounded-xl shadow-lg transform transition hover:scale-105 active:scale-95">
+                🔓 Unlock My Gift
+            </button>
+            <p id="error-msg" class="text-red-500 mt-3 text-sm hidden">Hmm, that's not the magic date! Try again.</p>
+        </div>
+    </div>
+
+    <!-- ================= STEP 2: COUNTDOWN ================= -->
+    <div id="step-countdown" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-black z-40 overflow-hidden">
+        <div id="butterfly-container"></div>
+        <div id="countdown-number">3</div>
+    </div>
+
+    <!-- ================= STEP 3: FLOWERS & HEADER ================= -->
+    <div id="step-flowers" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-gradient-to-b from-blue-100 to-pink-100 z-30 overflow-hidden">
+        <div id="flower-rain-container"></div>
+        <div id="flower-pop-container"></div>
+        <h1 class="princess-text text-center px-4">Happy Birthday<br>Princess</h1>
+        <div class="mt-12 animate-bounce">
+            <button onclick="goToStep('step-cake')" class="bg-white text-pink-500 px-6 py-2 rounded-full shadow-lg font-bold">Continue ➔</button>
+        </div>
+    </div>
+
+    <!-- ================= STEP 4: CAKE ================= -->
+    <div id="step-cake" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-pink-50 z-20">
+        <h2 class="text-2xl text-gray-600 mb-8 font-light">Make a wish...</h2>
+        
+        <div class="cake-container" onclick="blowCandle()">
+            <!-- Cake SVG -->
+            <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-xl">
+                <!-- Plate -->
+                <ellipse cx="100" cy="180" rx="90" ry="20" fill="#e0e0e0" />
+                <!-- Cake Base -->
+                <path d="M30,140 L30,100 Q100,80 170,100 L170,140 Q100,160 30,140" fill="#f8a5c2" />
+                <path d="M30,100 Q100,80 170,100 L170,110 Q100,90 30,110 Z" fill="#f78fb3" />
+                <!-- Icing -->
+                <path d="M25,100 Q40,80 55,100 T85,100 T115,100 T145,100 T175,100" fill="none" stroke="white" stroke-width="8" stroke-linecap="round"/>
+                <!-- Candle -->
+                <rect x="95" y="60" width="10" height="40" fill="#63cdda" rx="2" />
+            </svg>
+            <!-- Flame -->
+            <div id="flame" class="candle-flame"></div>
+            <div id="smoke-particles"></div>
+        </div>
+
+        <p class="mt-8 text-gray-400 text-sm">Tap the cake to blow the candle</p>
+    </div>
+
+    <!-- ================= STEP 5: HEART LETTER PREVIEW ================= -->
+    <div id="step-heart" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-rose-50 z-20">
+        <div class="heart-box" onclick="goToStep('step-gallery')">
+            <div class="heart-content">
+                <h3 class="text-2xl font-bold mb-2">For You</h3>
+                <p class="text-sm opacity-90">I Know this might not be the best because this came soon but I look forward to planning something nice. Talking to you has honestly been one of the nicest things lately. You have this beautiful mind and way of making conversations feel easy and warm, and every time we talk it leaves me smiling.You’re not just really pretty you have this gentle, lovely energy about you that makes you even more special. I’m really glad I got the chance. Sometimes people come into your life unexpectedly and you realize they’re actually someone you want to keep around, and that’s how I feel about you. I’m really happy we met. 🤍</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= STEP 6: GALLERY ================= -->
+    <div id="step-gallery" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-gray-900 z-20 overflow-y-auto py-10">
+        <h2 class="text-white text-3xl mb-10 font-['Dancing_Script']">Beautiful Moments</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 p-4 max-w-4xl">
+            <!-- Placeholder Images -->
+            <div class="polaroid bg-white p-2 pb-8 shadow-xl transform rotate-2">
+                <img src="/Images 2/IMG_6186.jpg" class="w-full h-64 object-cover">
+                <p class="text-center text-sm mt-2 text-gray-600">My Beautiful Goddess 🙇‍♂️</p>
+            </div>
+            <div class="polaroid bg-white p-2 pb-8 shadow-xl transform -rotate-3">
+                <img src="/Images 2/IMG_6188.jpg" class="w-full h-64 object-cover">
+                <p class="text-center text-sm mt-2 text-gray-600">Mesmerizing Queen</p>
+            </div>
+            <div class="polaroid bg-white p-2 pb-8 shadow-xl transform rotate-1">
+                <img src="/Images 2/IMG_6189.jpg" class="w-full h-64 object-cover">
+                <p class="text-center text-sm mt-2 text-gray-600">Dazzling Girl</p>
+            </div>
+            <div class="polaroid bg-white p-2 pb-8 shadow-xl transform -rotate-2">
+                <img src="/Images 2/IMG_6191.jpg" class="w-full h-64 object-cover">
+                <p class="text-center text-sm mt-2 text-gray-600">Heavenly girl</p>
+            </div>
+        </div>
+        <button onclick="goToStep('step-gift')" class="mt-12 bg-pink-500 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-pink-600 transition">Next Surprise</button>
+    </div>
+
+    <!-- ================= STEP 7: FINAL GIFT TRIGGER ================= -->
+    <div id="step-gift" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-gradient-to-br from-purple-100 to-pink-100 z-20">
+        <div class="glowing-heart" onclick="openFinalLetter()">❤️</div>
+        <h2 class="mt-8 text-2xl text-gray-700 font-bold animate-pulse">Click to open my letter</h2>
+    </div>
+
+    <!-- ================= STEP 8: FINAL LETTER PAGE ================= -->
+    <div id="step-letter" class="hidden-step flex flex-col items-center justify-center w-full h-full absolute top-0 left-0 bg-blue-50 z-50 overflow-hidden">
+        <div id="balloon-container"></div>
+        
+        <div class="letter-paper relative z-10 w-11/12 md:w-2/3 lg:w-1/2 h-5/6 p-8 md:p-12 rounded-lg overflow-y-auto shadow-2xl border border-gray-200">
+            <h1 class="text-4xl text-pink-500 mb-6 text-center">My Dearest Princess,</h1>
+            <p class="mb-4">Happy Birthday to the most amazing and beautiful girl I know and could ever come across "TheonlySofiri".</p>
+            <p class="mb-4">On this special day, I want you to know how much of an amazing person you are. Even though we just started talking, I genuinely enjoy conversation with you. You have this beautiful energy about you that’s hard to ignore.</p>
+            <p class="mb-4">You are not just beautiful on the outside, but your heart is made of pure gold. Your kindness, your strength, and your love inspire me every single day.</p>
+            <p class="mb-4"> I hope today reminds you how amazing and beautiful you truly are not just on the outside, but in the way you smile, the way you talk, and the warmth you carry. You deserve happiness, laughter, and every good thing life has to offer.</p>
+            <p class="mb-4">I hope this year brings you as much joy. May all your dreams come true, and may you always find reasons to smile.</p>
+            <p class="mb-4">You’re the kind of beautiful that goes beyond looks. Yes, you’re incredibly pretty, but what really stands out is the light in your presence the way you make conversations feel easy, the way your smile feels genuine, and the way your energy makes people want to stay around you a little longer. Some people are beautiful, but you… you’re the kind of beautiful people remember.</p>
+            <p class="mb-4">I am so lucky to have you. Here is to many more birthdays together!</p>
+            <p class="mt-8 text-right text-2xl">Yours Truly❤️,<br>Kenndy🌸</p>
+            
+            <button onclick="location.reload()" class="mt-8 block mx-auto bg-gray-800 text-white px-6 py-2 rounded-full text-sm hover:bg-gray-700">Replay Magic</button>
+        </div>
+    </div>
+    <script>
+        // --- CONFIGURATION ---
+        // Set the correct password: MM-DD format (e.g., "03-13" for Mar 13)
+        const CORRECT_MONTH = "03"; 
+        const CORRECT_DAY = "13";
+
+        // --- INITIALIZATION ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate Days
+            const daySelect = document.getElementById('day-input');
+            for(let i=1; i<=31; i++) {
+                let val = i < 10 ? `0${i}` : i;
+                let opt = document.createElement('option');
+                opt.value = val;
+                opt.innerText = val;
+                daySelect.appendChild(opt);
+            }
+        });
+
+        // --- NAVIGATION LOGIC ---
+        function goToStep(stepId) {
+            // Hide all steps
+            document.querySelectorAll('[id^="step-"]').forEach(el => {
+                el.classList.add('hidden-step');
+            });
+            // Show target
+            const target = document.getElementById(stepId);
+            target.classList.remove('hidden-step');
+            target.classList.add('fade-in');
+
+            // Trigger specific animations based on step
+            if(stepId === 'step-countdown') startCountdown();
+            if(stepId === 'step-flowers') startFlowerAnimation();
+            if(stepId === 'step-letter') startBalloons();
+        }
+
+        // --- STEP 1: LOGIN ---
+        function checkLogin() {
+            const m = document.getElementById('month-input').value;
+            const d = document.getElementById('day-input').value;
+            
+            if(m === CORRECT_MONTH && d === CORRECT_DAY) {
+                goToStep('step-countdown');
+            } else {
+                const err = document.getElementById('error-msg');
+                err.classList.remove('hidden');
+                // Shake animation
+                document.querySelector('.glass-panel').classList.add('animate-bounce');
+                setTimeout(() => document.querySelector('.glass-panel').classList.remove('animate-bounce'), 1000);
+            }
+        }
+
+        // --- STEP 2: COUNTDOWN ---
+        function startCountdown() {
+            const container = document.getElementById('butterfly-container');
+            const numDisplay = document.getElementById('countdown-number');
+            let count = 3;
+
+            // Create Butterflies
+            for(let i=0; i<20; i++) {
+                const b = document.createElement('div');
+                b.className = 'butterfly';
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                b.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(b);
+            }
+
+            numDisplay.innerText = count;
+            
+            const interval = setInterval(() => {
+                count--;
+                if(count > 0) {
+                    numDisplay.innerText = count;
+                } else {
+                    clearInterval(interval);
+                    goToStep('step-flowers');
+                }
+            }, 1000);
+        }
+
+        // --- STEP 3: FLOWERS ---
+        function startFlowerAnimation() {
+            const rainContainer = document.getElementById('flower-rain-container');
+            const popContainer = document.getElementById('flower-pop-container');
+
+            // Falling Flowers
+            for(let i=0; i<30; i++) {
+                const f = document.createElement('div');
+                f.className = 'flower';
+                f.style.left = Math.random() * 100 + 'vw';
+                f.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                f.style.animationDelay = Math.random() * 5 + 's';
+                rainContainer.appendChild(f);
+            }
+
+            // Popping Flowers from bottom
+            setTimeout(() => {
+                for(let i=0; i<15; i++) {
+                    setTimeout(() => {
+                        const p = document.createElement('div');
+                        p.className = 'pop-flower';
+                        p.style.left = Math.random() * 100 + 'vw';
+                        p.style.backgroundColor = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3'][Math.floor(Math.random()*4)];
+                        popContainer.appendChild(p);
+                    }, i * 200);
+                }
+            }, 500);
+        }
+
+        // --- STEP 4: CAKE ---
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            const smokeContainer = document.getElementById('smoke-particles');
+            
+            if(flame.style.display === 'none') return; // Already blown
+
+            // Hide flame
+            flame.style.display = 'none';
+
+            // Create smoke
+            for(let i=0; i<5; i++) {
+                const s = document.createElement('div');
+                s.className = 'smoke smoke-anim';
+                s.style.left = (50 + (Math.random() * 10 - 5)) + '%';
+                s.style.animationDelay = (i * 0.2) + 's';
+                smokeContainer.appendChild(s);
+            }
+
+            // Wait then next step
+            setTimeout(() => {
+                goToStep('step-heart');
+            }, 2000);
+        }
+
+        // --- STEP 8: LETTER BALLOONS ---
+        function openFinalLetter() {
+            goToStep('step-letter');
+        }
+
+        function startBalloons() {
+            const container = document.getElementById('balloon-container');
+            const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#5f27cd'];
+            
+            for(let i=0; i<15; i++) {
+                const b = document.createElement('div');
+                b.className = 'balloon';
+                b.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                b.style.left = Math.random() * 100 + 'vw';
+                b.style.animationDuration = (Math.random() * 5 + 8) + 's';
+                b.style.animationDelay = Math.random() * 5 + 's';
+                container.appendChild(b);
+            }
+        }
+    </script>
+</body>
+</html>
